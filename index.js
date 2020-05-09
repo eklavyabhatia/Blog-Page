@@ -1,10 +1,12 @@
 const express = require('express')
 const port = 8080
-
+const expressLayouts = require('express-ejs-layouts')
 const app = express()
 
 app.set('view engine', 'ejs')
 app.set('views', './views')
+
+app.use(expressLayouts)
 
 app.use('/', require('./routes'))
 
