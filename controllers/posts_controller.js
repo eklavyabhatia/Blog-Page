@@ -10,6 +10,8 @@ module.exports.create = function (req, res) {
             console.log('Errot in creating post')
             return
         }
-        return res.redirect('back')
+
+
+        return res.redirect('/' )
     })
 }
