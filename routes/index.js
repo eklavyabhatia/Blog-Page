@@ -5,7 +5,8 @@ const homeController = require('../controllers/home_controller')
 
 console.log('router loaded')
 
-router.get('/', passport.checkAuthentication,homeController.home)
+router.get('/', passport.checkAuthentication, homeController.home)
 router.use('/users', require('./users'))
+router.use('/posts', require('./posts'))
 
 module.exports = router
