@@ -30,6 +30,11 @@
     <ul>
         <%for(let com of post.comments){%>
     <li>
+        <%if(locals.user && locals.user.id==com.user.id){%>
+        <a href="/comments/destroy/<%=com.id%>">DEL</a>
+
+        <%}%>
+            
         <%=com.user.name%>
         <br>
         <%=com.content%>
