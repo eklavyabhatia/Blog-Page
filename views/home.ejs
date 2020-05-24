@@ -1,53 +1,63 @@
 <h1>Linkster/<%=title%></h1>
-
-<section id="Feed-posts">
-    <h4>Posts</h4>
+<br>
+<section >
+    
     <form action="/posts/create-post" id="new-post-form" method="post">
-        <textarea name="content" placeholder="Type Here" cols="30" rows="3"></textarea>
-        <input type="submit" value="Post">
+        <div class="container">
+            <textarea name="content" placeholder="Type Here" cols="30" rows="3"></textarea>
+            <input type="submit" value="Post" class="vertical-center btn btn-success " id="postf">
+        </div>
     </form>
+    <h4>Posts</h4>
 
 </section>
 
 
 
-<section>
+<section id="posts">
     <%for(let post of posts){%>
 
 
+    <div class="card" id="post">
+        <h5 class="card-header" id="postheading">
+            <%=post.user.name%>
+            <%if(locals.user && locals.user.id==post.user.id){%>
+            <a href="/posts/destroy/<%=post.id%>" class="btn btn-danger rightalign btn-sm">DEL</a>
+            <%}%>
+        </h5>
+        <div class="card-body">
+            <p class="card-text">
+                <%=post.content%>
+            </p>
 
-    <h2>
-        <%=post.user.name%>
-    </h2>
-    <p>
-        <%=post.content%>
-    </p>
-    <%if(locals.user && locals.user.id==post.user.id){%>
-    <a href="/posts/destroy/<%=post.id%>">DEL</a>
 
-    <%}%>
-    
-    <ul>
+    </div>
+
+    <ul class="list-group list-group-flush">
         <%for(let com of post.comments){%>
-    <li>
-        <%if(locals.user && locals.user.id==com.user.id){%>
-        <a href="/comments/destroy/<%=com.id%>">DEL</a>
 
+        <li class="list-group-item">
+
+            <%if(locals.user && locals.user.id==com.user.id){%>
+            <a href="/comments/destroy/<%=com.id%>" class="btn btn-danger btn-sm rightalign">X</a>
+
+            <%}%>
+            <b><%=com.user.name%></b>
+            <br>
+            <%=com.content%>
+        </li>
         <%}%>
-            
-        <%=com.user.name%>
-        <br>
-        <%=com.content%>
-
-    </li>
-    <%}%>
     </ul>
+
     <div class="post-comments">
         <form action="/comments/create-comment" method="post">
             <input type="text" name="content" placeholder="Type Here">
             <input type="hidden" name="post" value="<%=post._id%>">
-    <input type="submit" value="Add Comment">
-    </form>
-    </div>
-    <%}%>
+        <input type="submit" value="Add Comment" class="btn btn-success btn-sm rightalign">
+        </form>
+        </div>
+
+        </div>
+        <%}%>
+
 </section>
