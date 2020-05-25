@@ -6,13 +6,14 @@ module.exports.home = function (req, res) {
     // res.cookie('userid',26)
 
     Post.find({}).populate('user').populate({
-        path:'comments',
-        populate:{
-            path:'user'
+        path: 'comments',
+        populate: {
+            path: 'user'
         }
     }).exec(function (err, posts) {
-
-        return res.render('home', { 'title': 'Home', posts: posts })
+        User.find({}, function (err, users) {
+            return res.render('home', { 'title': 'Home', posts: posts, users: users })
+        })
 
     })
 }

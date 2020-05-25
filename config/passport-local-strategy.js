@@ -66,7 +66,7 @@ passport.setAuthenticatedUser = function (req, res, next) {
 
 passport.blockAccessIfAuthenticated = function (req, res, next) {
     if (req.isAuthenticated()) {
-        return res.redirect('/users/profile')
+        return res.redirect('/')
     }
     next()
 }

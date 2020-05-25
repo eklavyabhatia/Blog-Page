@@ -1,7 +1,7 @@
 <h1>Linkster/<%=title%></h1>
 <br>
-<section >
-    
+<section>
+
     <form action="/posts/create-post" id="new-post-form" method="post">
         <div class="container">
             <textarea name="content" placeholder="Type Here" cols="30" rows="3"></textarea>
@@ -60,4 +60,12 @@
         </div>
         <%}%>
 
+</section>
+
+<section>
+    <h4>All Users</h4>
+    <% for(u of users){%>
+        <p><a href="/users/profile/<%=u.id%>"><%=u.name%></a></p>
+        
+        <%}%>
 </section>
