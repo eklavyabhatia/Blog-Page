@@ -19,13 +19,13 @@ module.exports.update = function (req, res) {
 
 module.exports.signin = function (req, res) {
     return res.render('user_sign_in', {
-        title: 'Linkster | SignIn'
+        title: 'Blog Page | SignIn'
     })
 }
 
 module.exports.signup = function (req, res) {
     return res.render('user_sign_up', {
-        title: 'Linkster | SignUp'
+        title: 'Blog Page | SignUp'
     })
 }
 
